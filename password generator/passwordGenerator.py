@@ -4,7 +4,7 @@ from ttkthemes import ThemedTk
 import random
 
 win = ThemedTk(theme='azure')
-win.geometry("800x450")
+win.geometry("1200x850")
 
 def creatPassword():
 
@@ -13,11 +13,13 @@ def creatPassword():
 
     amount = int(a.get())
     lenght = int(b.get())
-    maxAmount = 10
-    maxLenght = 70
+    maxAmount = 25
+    maxLenght = 120
 
-    if(amount > maxAmount or lenght > maxLenght):
-        label.config(text="ERROR")
+    if(amount > maxAmount):
+        label.config(text="ERROR = Max passwords: "+ str(maxAmount))
+    elif(lenght > maxLenght):
+        label.config(text="ERROR = Max lenght per password: "+ str(maxLenght))
     else:
         for pwd in range(amount):
             for c in range(lenght):
@@ -33,7 +35,7 @@ def creatPassword():
     w.insert(1.0, passwords)
 
 label = ttk.Label(win, text="Password amount:", font=('sora 12')).pack()
-a = ttk.Entry(win, width=35)
+a = ttk.Entry(win, width=30)
 a.pack()
 
 label = ttk.Label(win, text="Password lengh:", font=('sora 12')).pack()
